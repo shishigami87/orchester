@@ -10,6 +10,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AdresseRepository extends JpaRepository<AdresseEntity, Long> {
 
-    public AdresseEntity findById(long id);
-
 }

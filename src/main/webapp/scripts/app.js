@@ -16,7 +16,7 @@ app.config(function($routeProvider) {
 
 app.controller('HomeController', function($scope, $route, AdresseFactory) {
     $scope.title = "Home";
-    $scope.adresse = AdresseFactory.get({}, { 'id' : 1});
+    $scope.adressen = AdresseFactory.query();
 });
 
 app.factory('AdresseFactory', function($resource) {

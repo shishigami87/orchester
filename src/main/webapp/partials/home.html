@@ -1,3 +1,22 @@
 You are here : {{ title }}
 <br/>
-Ort : {{ adresse.ort }}
+<input type="text" class="form-control" placeholder="Search" ng-model="query" />
+
+<table class="table table-striped table-hover table-bordered">
+    <thead>
+        <th>Id</th>
+        <th>PLZ</th>
+        <th>Ort</th>
+        <th>Straße</th>
+        <th>Hausnummer</th>
+    </thead>
+    <tbody>
+        <tr ng-repeat="adresse in adressen | filter:query">
+            <td>{{ adresse.id }}</td>
+            <td>{{ adresse.plz }}</td>
+            <td>{{ adresse.ort }}</td>
+            <td>{{ adresse.strasse }}</td>
+            <td>{{ adresse.hausnummer }}</td>
+        </tr>
+    </tbody>
+</table>

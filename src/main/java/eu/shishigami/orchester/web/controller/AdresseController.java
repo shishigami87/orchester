@@ -26,7 +26,7 @@ public class AdresseController {
         return adresseService.findOne(id);
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public @ResponseBody List<AdresseEntity> getAllAdressen() {
         return adresseService.findAll();
     }
