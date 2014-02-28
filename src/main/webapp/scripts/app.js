@@ -1,5 +1,6 @@
 var app = angular.module('app', [
-    'ngRoute'
+    'ngRoute',
+    'ngResource'
 ]);
 
 app.config(function($routeProvider) {
@@ -13,6 +14,13 @@ app.config(function($routeProvider) {
     });
 });
 
-app.controller('HomeController', function($scope, $route) {
+app.controller('HomeController', function($scope, $route, AdresseFactory) {
     $scope.title = "Home";
+    $scope.adresse = AdresseFactory.get({}, { 'id' : 1});
+});
+
+app.factory('AdresseFactory', function($resource) {
+    return $resource('/api/adresse/:id', {
+        id : '@id'
+    });
 });
