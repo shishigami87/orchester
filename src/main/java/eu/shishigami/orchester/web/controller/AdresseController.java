@@ -3,11 +3,10 @@ package eu.shishigami.orchester.web.controller;
 import eu.shishigami.orchester.domain.entity.AdresseEntity;
 import eu.shishigami.orchester.domain.service.AdresseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,14 +20,26 @@ public class AdresseController {
     @Autowired
     private AdresseService adresseService;
 
+    @RequestMapping(method = RequestMethod.GET)
+    public @ResponseBody List<AdresseEntity> getAllAdressen() {
+        return adresseService.findAll();
+    }
+
     @RequestMapping(value = "{id}", method = RequestMethod.GET)
     public @ResponseBody AdresseEntity getAdresseById(@PathVariable Long id) {
         return adresseService.findOne(id);
     }
 
-    @RequestMapping(method = RequestMethod.GET)
-    public @ResponseBody List<AdresseEntity> getAllAdressen() {
-        return adresseService.findAll();
+    @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<AdresseEntity> deleteAdresse(@PathVariable Long id) {
+        AdresseEntity adresseEntity = adresseService.findOne(id);
+        adresseService.delete(adresseEntity);
+
+        if (adresseService.findOne(id) == null) {
+            return new ResponseEntity<AdresseEntity>(adresseEntity, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<AdresseEntity>(adresseEntity, HttpStatus.UNPROCESSABLE_ENTITY);
+        }
     }
 
 }
