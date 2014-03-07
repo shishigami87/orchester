@@ -1,22 +1,7 @@
-You are here : {{ title }}
-<br/>
-<input type="text" class="form-control" placeholder="Search" ng-model="query" />
+<h1> {{ title }} </h1>
 
-<table class="table table-striped table-hover table-bordered">
-    <thead>
-        <th>Id</th>
-        <th>PLZ</th>
-        <th>Ort</th>
-        <th>Straße</th>
-        <th>Hausnummer</th>
-    </thead>
-    <tbody>
-        <tr ng-repeat="adresse in adressen | filter:query">
-            <td>{{ adresse.id }}</td>
-            <td>{{ adresse.plz }}</td>
-            <td>{{ adresse.ort }}</td>
-            <td>{{ adresse.strasse }}</td>
-            <td>{{ adresse.hausnummer }}</td>
-        </tr>
-    </tbody>
-</table>
+<hr/>
+
+<h3>Spring Data JPA Beispielprojekt</h3>
+
+<p>Diagramm Stack</p>

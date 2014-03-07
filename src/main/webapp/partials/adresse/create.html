@@ -1,0 +1,41 @@
+<h1>{{ title }}</h1>
+
+<hr/>
+
+<form role="form" ng-submit="handleSave()">
+
+    <div class="form-group">
+        <label for="ortInput">Ort</label>
+        <input type="text"
+               class="form-control" id="ortInput" placeholder="Ort"
+               data-ng-model="ort" required/>
+    </div>
+
+    <div class="form-group">
+        <label for="plzInput">PLZ</label>
+        <input type="text"
+               class="form-control" id="plzInput" placeholder="PLZ"
+               data-ng-model="plz" required/>
+    </div>
+
+    <div class="form-group">
+        <label for="strasseInput">Straße</label>
+        <input type="text"
+               class="form-control" id="strasseInput" placeholder="Straße"
+               data-ng-model="strasse" required/>
+    </div>
+
+    <div class="form-group">
+        <label for="hausnummerInput">Hausnummer</label>
+        <input type="text"
+               class="form-control" id="hausnummerInput" placeholder="Hausnummer"
+               data-ng-model="hausnummer" required/>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        <span class="glyphicon glyphicon-plus"></span> Erstellen
+    </button>
+    <button type="button" class="btn btn-default" ng-click="handleBack()">
+        Zurück
+    </button>
+</form>

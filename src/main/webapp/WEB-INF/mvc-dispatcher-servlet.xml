@@ -19,7 +19,7 @@
 
     <context:component-scan base-package="eu.shishigami"/>
 
-    <context:annotation-config />
+    <context:annotation-config/>
 
     <mvc:annotation-driven/>
 
