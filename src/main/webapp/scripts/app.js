@@ -41,7 +41,7 @@ app.controller('AdresseOverviewController', function ($scope, $route, $location,
     };
 
     $scope.handleUpdate = function() {
-        AdresseFactory.update($scope.selectedAdresse).$promise.then(
+        $scope.selectedAdresse.$save().$promise.then(
             function(value) {
                 $scope.adressen = AdresseFactory.query();
             }
@@ -59,14 +59,10 @@ app.controller('AdresseOverviewController', function ($scope, $route, $location,
 
 app.controller('AdresseCreateController', function ($scope, $route, $location, AdresseFactory) {
     $scope.title = "Adresse erstellen";
+    $scope.newAdresse = new AdresseFactory();
 
     $scope.handleSave = function () {
-        var newAdresse = new AdresseFactory();
-        newAdresse.plz = $scope.plz;
-        newAdresse.ort = $scope.ort;
-        newAdresse.strasse = $scope.strasse;
-        newAdresse.hausnummer = $scope.hausnummer;
-        newAdresse.$save();
+        $scope.newAdresse.$save();
         $location.path('/adresse/');
     };
 

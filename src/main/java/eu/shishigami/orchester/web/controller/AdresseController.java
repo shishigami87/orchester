@@ -4,8 +4,6 @@ import eu.shishigami.orchester.domain.entity.AdresseEntity;
 import eu.shishigami.orchester.domain.service.AdresseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +27,11 @@ public class AdresseController {
 
     @RequestMapping(method = RequestMethod.POST)
     public @ResponseBody AdresseEntity saveAdresse(@RequestBody AdresseEntity adresseEntity) {
-        System.out.println(adresseEntity.toString());
+        return adresseService.save(adresseEntity);
+    }
+
+    @RequestMapping(value = "{id}", method = RequestMethod.POST)
+    public @ResponseBody AdresseEntity updateAdresse(@RequestBody AdresseEntity adresseEntity) {
         return adresseService.save(adresseEntity);
     }
 
