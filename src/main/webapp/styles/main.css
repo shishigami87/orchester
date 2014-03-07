@@ -3,9 +3,36 @@ body {
 }
 
 .container-margin {
-    margin-top: 50px;
+    margin-top: 75px;
 }
 
 th.button-column {
     width: 70px;
+}
+
+.table-header {
+    border: 1px solid #ddd;
+    border-bottom: 0px;
+    padding: 8px;
+}
+
+.table-header .form-control {
+    max-width: 24%;
+}
+
+.navbar-brand {
+    color: #bbbbbb !important;
+}
+
+.navbar-brand:hover {
+    color: #ffffff !important;
+}
+
+.dropdown-toggle {
+    color: #bbbbbb !important;
+}
+
+.dropdown-toggle:hover {
+    color: #ffffff !important;
+    cursor: pointer;
 }
