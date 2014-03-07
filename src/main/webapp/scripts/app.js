@@ -32,8 +32,28 @@ app.controller('AdresseOverviewController', function ($scope, $route, $location,
     $scope.title = "Adressen";
     $scope.adressen = AdresseFactory.query();
 
-    $scope.handleCreate = function () {
+    $scope.handleCreate = function() {
         $location.path('/adresse/create/')
+    };
+
+    $scope.handleSelect = function(adresse) {
+        $scope.selectedAdresse = adresse;
+    };
+
+    $scope.handleUpdate = function() {
+        AdresseFactory.update($scope.selectedAdresse).$promise.then(
+            function(value) {
+                $scope.adressen = AdresseFactory.query();
+            }
+        );
+    };
+
+    $scope.handleDelete = function(id) {
+        AdresseFactory.delete({ id: id }).$promise.then(
+            function(value) {
+                $scope.adressen = AdresseFactory.query();
+            }
+        );
     };
 });
 

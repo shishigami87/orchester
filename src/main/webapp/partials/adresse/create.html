@@ -5,17 +5,17 @@
 <form role="form" ng-submit="handleSave()">
 
     <div class="form-group">
-        <label for="ortInput">Ort</label>
-        <input type="text"
-               class="form-control" id="ortInput" placeholder="Ort"
-               data-ng-model="ort" required/>
-    </div>
-
-    <div class="form-group">
         <label for="plzInput">PLZ</label>
         <input type="text"
                class="form-control" id="plzInput" placeholder="PLZ"
                data-ng-model="plz" required/>
+    </div>
+
+    <div class="form-group">
+        <label for="ortInput">Ort</label>
+        <input type="text"
+               class="form-control" id="ortInput" placeholder="Ort"
+               data-ng-model="ort" required/>
     </div>
 
     <div class="form-group">
@@ -38,4 +38,5 @@
     <button type="button" class="btn btn-default" ng-click="handleBack()">
         Zurück
     </button>
+
 </form>

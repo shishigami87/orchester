@@ -5,3 +5,7 @@ body {
 .container-margin {
     margin-top: 50px;
 }
+
+th.button-column {
+    width: 70px;
+}

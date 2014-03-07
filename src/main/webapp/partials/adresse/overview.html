@@ -11,7 +11,7 @@
     <th>Ort</th>
     <th>Straße</th>
     <th>Hausnummer</th>
-    <th></th>
+    <th class="button-column"></th>
     </thead>
     <tbody>
     <tr ng-repeat="adresse in adressen | filter:query">
@@ -21,10 +21,10 @@
         <td>{{ adresse.strasse }}</td>
         <td>{{ adresse.hausnummer }}</td>
         <td>
-            <button type="button" class="btn btn-xs btn-primary">
+            <button type="button" class="btn btn-xs btn-primary" ng-click="handleSelect(adresse)" data-toggle="modal" data-target="#editDialog">
                 <span class="glyphicon glyphicon-pencil"/>
             </button>
-            <button type="button" class="btn btn-xs btn-danger">
+            <button type="button" class="btn btn-xs btn-danger" ng-click="handleSelect(adresse)" data-toggle="modal" data-target="#deleteDialog">
                 <span class="glyphicon glyphicon-remove"/>
             </button>
         </td>
@@ -35,3 +35,92 @@
 <button type="button" class="btn btn-primary" ng-click="handleCreate()">
     <span class="glyphicon glyphicon-plus"></span> Erstellen
 </button>
+
+<!-- Edit dialog -->
+<div class="modal" id="editDialog" tabindex="-1" role="dialog" aria-labelledby="editDialogLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="editDialogLabel">Bearbeiten</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form">
+
+                    <div class="form-group">
+                        <label for="plzInput">PLZ</label>
+                        <input type="text"
+                               class="form-control" id="plzInput" placeholder="PLZ"
+                               data-ng-model="selectedAdresse.plz" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ortInput">Ort</label>
+                        <input type="text"
+                               class="form-control" id="ortInput" placeholder="Ort"
+                               data-ng-model="selectedAdresse.ort" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="strasseInput">Straße</label>
+                        <input type="text"
+                               class="form-control" id="strasseInput" placeholder="Straße"
+                               data-ng-model="selectedAdresse.strasse" required/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hausnummerInput">Hausnummer</label>
+                        <input type="text"
+                               class="form-control" id="hausnummerInput" placeholder="Hausnummer"
+                               data-ng-model="selectedAdresse.hausnummer" required/>
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="handleUpdate()">
+                    <span class="glyphicon glyphicon-remove"/>Speichern
+                </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Abbrechen</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete confirmation dialog -->
+<div class="modal" id="deleteDialog" tabindex="-1" role="dialog" aria-labelledby="deleteDialogLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="deleteDialogLabel">Bestätigen</h4>
+            </div>
+            <div class="modal-body">
+                Möchten Sie diese Adresse wirklich löschen? <br/> <br />
+
+                <dl class="dl-horizontal">
+                    <dt>Id</dt>
+                    <dd>{{ selectedAdresse.id }}</dd>
+
+                    <dt>PLZ</dt>
+                    <dd>{{ selectedAdresse.plz }}</dd>
+
+                    <dt>Ort</dt>
+                    <dd>{{ selectedAdresse.ort }}</dd>
+
+                    <dt>Straße</dt>
+                    <dd>{{ selectedAdresse.strasse }}</dd>
+
+                    <dt>Hausnummer</dt>
+                    <dd>{{ selectedAdresse.hausnummer }}</dd>
+                </dl>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" ng-click="handleDelete(selectedAdresse.id)" data-dismiss="modal">
+                    <span class="glyphicon glyphicon-remove"/>Löschen
+                </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Abbrechen</button>
+            </div>
+        </div>
+    </div>
+</div>
