@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Created by Shishigami on 28.02.14.
+ * Created by Marcel Herd on 28.02.14.
  */
 @Service
 public class AdresseService {

@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import java.io.Serializable;
 
 /**
- * Created by MarcelNoir on 10.03.14.
+ * Created by Marcel Herd on 10.03.14.
  */
 @Entity
 @Data

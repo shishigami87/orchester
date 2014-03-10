@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Created by MarcelNoir on 10.03.14.
+ * Created by Marcel Herd on 10.03.14.
  */
 @Service
 public class InstrumentService {

@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
- * Created by Shishigami on 28.02.14.
+ * Created by Marcel Herd on 28.02.14.
  */
 @Entity
 @Data
