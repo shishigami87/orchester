@@ -19,31 +19,31 @@ public class InstrumentService {
     @Autowired
     private InstrumentRepository instrumentRepository;
 
-    private void delete(final Long id) {
+    public void delete(final Long id) {
         instrumentRepository.delete(id);
     }
 
-    private void delete(final InstrumentEntity instrumentEntity) {
+    public void delete(final InstrumentEntity instrumentEntity) {
         instrumentRepository.delete(instrumentEntity);
     }
 
-    private InstrumentEntity save(final InstrumentEntity instrumentEntity) {
+    public InstrumentEntity save(final InstrumentEntity instrumentEntity) {
         return instrumentRepository.save(instrumentEntity);
     }
 
-    private InstrumentEntity findOne(final Long id) {
+    public InstrumentEntity findOne(final Long id) {
         return instrumentRepository.findOne(id);
     }
 
-    private List<InstrumentEntity> findAll() {
+    public List<InstrumentEntity> findAll() {
         return instrumentRepository.findAll();
     }
 
-    private List<InstrumentEntity> findAll(final Sort sort) {
+    public List<InstrumentEntity> findAll(final Sort sort) {
         return instrumentRepository.findAll();
     }
 
-    private Page<InstrumentEntity> findAll(final Pageable pageable) {
+    public Page<InstrumentEntity> findAll(final Pageable pageable) {
         return instrumentRepository.findAll(pageable);
     }
     

@@ -19,31 +19,31 @@ public class PersonService {
     @Autowired
     private PersonRepository personRepository;
 
-    private void delete(final Long id) {
+    public void delete(final Long id) {
         personRepository.delete(id);
     }
 
-    private void delete(final PersonEntity personEntity) {
+    public void delete(final PersonEntity personEntity) {
         personRepository.delete(personEntity);
     }
 
-    private PersonEntity save(final PersonEntity personEntity) {
+    public PersonEntity save(final PersonEntity personEntity) {
         return personRepository.save(personEntity);
     }
 
-    private PersonEntity findOne(final Long id) {
+    public PersonEntity findOne(final Long id) {
         return personRepository.findOne(id);
     }
 
-    private List<PersonEntity> findAll() {
+    public List<PersonEntity> findAll() {
         return personRepository.findAll();
     }
 
-    private List<PersonEntity> findAll(final Sort sort) {
+    public List<PersonEntity> findAll(final Sort sort) {
         return personRepository.findAll();
     }
 
-    private Page<PersonEntity> findAll(final Pageable pageable) {
+    public Page<PersonEntity> findAll(final Pageable pageable) {
         return personRepository.findAll(pageable);
     }
 

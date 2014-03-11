@@ -3,16 +3,27 @@
 <head>
     <meta charset="utf-8">
 
+    <!-- Vendor resources from CDN
+
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
-    <link href="styles/main.css" rel="stylesheet">
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular-route.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular-resource.min.js"></script>
+    -->
 
+    <link href="styles/vendor/bootstrap.min.css" rel="stylesheet">
+    <link href="styles/vendor/font-awesome.min.css" rel="stylesheet">
+    <link href="styles/main.css" rel="stylesheet">
+
+    <script src="scripts/vendor/jquery.min.js"></script>
+    <script src="scripts/vendor/bootstrap.min.js"></script>
+    <script src="scripts/vendor/angular.min.js"></script>
+    <script src="scripts/vendor/angular-route.min.js"></script>
+    <script src="scripts/vendor/angular-resource.min.js"></script>
     <script src="scripts/app.js"></script>
 </head>
 <body>
@@ -24,13 +35,7 @@
 
             <div class="container">
                 <ul class="nav navbar-nav">
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown">Adresse <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/#/adresse/">Übersicht</a></li>
-                            <li><a href="/#/adresse/create/">Erstellen</a></li>
-                        </ul>
-                    </li>
+                    <li><a href="/#/adresse/">Adresse</a></li>
                 </ul>
             </div>
         </nav>
