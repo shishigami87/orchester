@@ -3,6 +3,8 @@ package eu.shishigami.orchester.web.controller;
 import eu.shishigami.orchester.domain.entity.InstrumentEntity;
 import eu.shishigami.orchester.domain.service.InstrumentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +14,7 @@ import java.util.List;
  * Created by Marcel Herd on 11.03.14.
  */
 @Controller
-@RequestMapping("/instrument")
+@RequestMapping("/person/{personId}/instrument")
 public class InstrumentController {
 
     @Autowired
@@ -41,6 +43,12 @@ public class InstrumentController {
     @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
     public void deleteInstrument(@PathVariable Long id) {
         instrumentService.delete(id);
+    }
+
+    @ExceptionHandler
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public void handleBadRequest(HttpMessageNotReadableException e) {
+        e.printStackTrace();
     }
 
 }

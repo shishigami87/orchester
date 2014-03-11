@@ -6,8 +6,16 @@ body {
     margin-top: 75px;
 }
 
-th.button-column {
+th.button-column-1 {
+    width: 35px;
+}
+
+th.button-column-2 {
     width: 70px;
+}
+
+th.button-column-3 {
+    width: 100px;
 }
 
 .table-header {
@@ -28,11 +36,11 @@ th.button-column {
     color: #ffffff !important;
 }
 
-.dropdown-toggle {
+.navbar-nav li a {
     color: #bbbbbb !important;
 }
 
-.dropdown-toggle:hover {
+.navbar-nav li a:hover {
     color: #ffffff !important;
     cursor: pointer;
 }

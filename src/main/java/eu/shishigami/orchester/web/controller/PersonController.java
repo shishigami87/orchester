@@ -3,6 +3,7 @@ package eu.shishigami.orchester.web.controller;
 import eu.shishigami.orchester.domain.entity.PersonEntity;
 import eu.shishigami.orchester.domain.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,6 +40,7 @@ public class PersonController {
     }
 
     @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void deletePerson(@PathVariable Long id) {
         personService.delete(id);
     }
