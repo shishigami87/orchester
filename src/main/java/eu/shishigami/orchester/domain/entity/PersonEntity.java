@@ -2,7 +2,6 @@ package eu.shishigami.orchester.domain.entity;
 
 import eu.shishigami.orchester.util.JsonDateDeserializer;
 import eu.shishigami.orchester.util.JsonDateSerializer;
-import lombok.*;
 import org.codehaus.jackson.annotate.JsonManagedReference;
 import org.codehaus.jackson.map.annotate.JsonDeserialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
@@ -21,7 +20,6 @@ import java.util.List;
  * Created by Marcel Herd on 10.03.14.
  */
 @Entity
-@Data
 public class PersonEntity implements Serializable {
 
     @Id
@@ -46,6 +44,70 @@ public class PersonEntity implements Serializable {
     @JsonDeserialize(using = JsonDateDeserializer.class)
     public Date getGeburtsdatum() {
         return geburtsdatum;
+    }
+
+    public void setGeburtsdatum(Date geburtsdatum) {
+        this.geburtsdatum = geburtsdatum;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public List<InstrumentEntity> getInstrumente() {
+        return instrumente;
+    }
+
+    public void setInstrumente(List<InstrumentEntity> instrumente) {
+        this.instrumente = instrumente;
+    }
+
+    public String getVorname() {
+        return vorname;
+    }
+
+    public void setVorname(String vorname) {
+        this.vorname = vorname;
+    }
+
+    public String getNachname() {
+        return nachname;
+    }
+
+    public void setNachname(String nachname) {
+        this.nachname = nachname;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        PersonEntity that = (PersonEntity) o;
+
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
+    }
+
+    @Override
+    public String toString() {
+        return "PersonEntity{" +
+                "id=" + id +
+                ", instrumente=" + instrumente +
+                ", vorname='" + vorname + '\'' +
+                ", nachname='" + nachname + '\'' +
+                ", geburtsdatum=" + geburtsdatum +
+                '}';
     }
 
 }
