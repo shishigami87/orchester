@@ -5,6 +5,8 @@ import eu.shishigami.orchester.domain.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by Shishigami on 21.03.14.
  */
@@ -28,6 +30,10 @@ public class StudentService {
 
     public StudentEntity findOne(final Long id) {
         return studentRepository.findOne(id);
+    }
+
+    public List<StudentEntity> findByVorname(final String vorname) {
+        return studentRepository.findByVorname(vorname);
     }
 
     public Iterable<StudentEntity> findAll() {
