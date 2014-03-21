@@ -1,11 +1,14 @@
 package eu.shishigami.orchester.util;
 
 import eu.shishigami.orchester.domain.entity.AdresseEntity;
+import eu.shishigami.orchester.domain.entity.StudentEntity;
 import eu.shishigami.orchester.domain.service.AdresseService;
+import eu.shishigami.orchester.domain.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -19,11 +22,36 @@ public class ApplicationInitializer {
     @Autowired
     private AdresseService adresseService;
 
+    @Autowired
+    private StudentService studentService;
+
     @PostConstruct
     public void init() {
         if (!initialized) {
             initialized = true;
-            printAllAdressen();
+            testStudentCrud();
+        }
+    }
+
+    private void testStudentCrud() {
+        System.out.println("Test Student CRUD...");
+
+        StudentEntity studentEntity = new StudentEntity();
+        studentEntity.setVorname("Marcel");
+        studentEntity.setNachname("Herd");
+        studentEntity.setGeburtsdatum(new Date());
+
+        System.out.println("Creating new entity...");
+        studentService.save(studentEntity);
+
+        System.out.println("Selecting one entity...");
+        StudentEntity newStudentEntity = studentService.findOne(1L);
+        System.out.println(newStudentEntity);
+
+        System.out.println("Selecting all entities...");
+        Iterable<StudentEntity> studenten = studentService.findAll();
+        for (StudentEntity studentEntity_ : studenten) {
+            System.out.println(studentEntity_);
         }
     }
 
