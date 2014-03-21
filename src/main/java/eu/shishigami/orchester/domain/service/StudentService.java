@@ -1,5 +1,6 @@
 package eu.shishigami.orchester.domain.service;
 
+import eu.shishigami.orchester.domain.entity.KlasseEntity;
 import eu.shishigami.orchester.domain.entity.StudentEntity;
 import eu.shishigami.orchester.domain.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,10 @@ public class StudentService {
 
     public List<StudentEntity> findByVornameAndNachname(final String vorname, final String nachname) {
         return studentRepository.findByVornameAndNachname(vorname, nachname);
+    }
+
+    public List<StudentEntity> findByKlasse(final KlasseEntity klasseEntity) {
+        return studentRepository.findByKlasse(klasseEntity);
     }
 
     public Iterable<StudentEntity> findAll() {

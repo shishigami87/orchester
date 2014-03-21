@@ -1,5 +1,6 @@
 package eu.shishigami.orchester.domain.repository;
 
+import eu.shishigami.orchester.domain.entity.KlasseEntity;
 import eu.shishigami.orchester.domain.entity.StudentEntity;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -15,5 +16,7 @@ public interface StudentRepository extends CrudRepository<StudentEntity, Long> {
     public List<StudentEntity> findByVorname(String vorname);
 
     public List<StudentEntity> findByVornameAndNachname(String vorname, String nachname);
+
+    public List<StudentEntity> findByKlasse(KlasseEntity klasseEntity);
 
 }
