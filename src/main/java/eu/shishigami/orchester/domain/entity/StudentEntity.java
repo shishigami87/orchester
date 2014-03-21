@@ -56,6 +56,14 @@ public class StudentEntity implements Serializable {
         this.geburtsdatum = geburtsdatum;
     }
 
+    public KlasseEntity getKlasse() {
+        return klasse;
+    }
+
+    public void setKlasse(KlasseEntity klasse) {
+        this.klasse = klasse;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
