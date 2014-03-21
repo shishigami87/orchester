@@ -36,6 +36,10 @@ public class StudentService {
         return studentRepository.findByVorname(vorname);
     }
 
+    public List<StudentEntity> findByVornameAndNachname(final String vorname, final String nachname) {
+        return studentRepository.findByVornameAndNachname(vorname, nachname);
+    }
+
     public Iterable<StudentEntity> findAll() {
         return studentRepository.findAll();
     }

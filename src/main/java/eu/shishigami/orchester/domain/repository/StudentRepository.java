@@ -14,4 +14,6 @@ public interface StudentRepository extends CrudRepository<StudentEntity, Long> {
 
     public List<StudentEntity> findByVorname(String vorname);
 
+    public List<StudentEntity> findByVornameAndNachname(String vorname, String nachname);
+
 }

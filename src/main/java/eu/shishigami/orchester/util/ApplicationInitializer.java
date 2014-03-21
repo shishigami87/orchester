@@ -29,7 +29,16 @@ public class ApplicationInitializer {
     public void init() {
         if (!initialized) {
             initialized = true;
-            testFindByVorname();
+            testFindByVorNachname();
+        }
+    }
+
+    private void testFindByVorNachname() {
+        System.out.println("Test FindByVorNachname");
+
+        List<StudentEntity> results = studentService.findByVornameAndNachname("Marcel", "Herd");
+        for (StudentEntity studentEntity : results) {
+            System.out.println(studentEntity);
         }
     }
 
