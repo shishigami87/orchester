@@ -40,7 +40,7 @@ public class StudentService {
         return studentRepository.findByVornameAndNachname(vorname, nachname);
     }
 
-    public Iterable<StudentEntity> findAll() {
+    public List<StudentEntity> findAll() {
         return studentRepository.findAll();
     }
 
