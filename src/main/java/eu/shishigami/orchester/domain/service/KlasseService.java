@@ -5,8 +5,10 @@ import eu.shishigami.orchester.domain.repository.KlasseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
- * Created by Shishigami on 21.03.14.
+ * Created by Marcel Herd on 21.03.14.
  */
 @Service
 public class KlasseService {
@@ -30,7 +32,7 @@ public class KlasseService {
         return klasseRepository.findOne(id);
     }
 
-    public Iterable<KlasseEntity> findAll() {
+    public List<KlasseEntity> findAll() {
         return klasseRepository.findAll();
     }
 
