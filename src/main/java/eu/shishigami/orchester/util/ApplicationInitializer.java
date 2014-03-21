@@ -6,10 +6,12 @@ import eu.shishigami.orchester.domain.entity.StudentEntity;
 import eu.shishigami.orchester.domain.service.AdresseService;
 import eu.shishigami.orchester.domain.service.KlasseService;
 import eu.shishigami.orchester.domain.service.StudentService;
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -34,7 +36,46 @@ public class ApplicationInitializer {
     public void init() {
         if (!initialized) {
             initialized = true;
-            testFindByKlasse();
+            testUltimativesFind();
+        }
+    }
+
+    private void testUltimativesFind() {
+        DateTime dateTime = new DateTime().withDate(1993, 1, 1);
+        Date startDate = dateTime.toDate();
+
+        dateTime = dateTime.withDate(1995, 12, 31);
+        Date endDate = dateTime.toDate();
+
+        List<String> vornameWhitelist = Arrays.asList(new String[] {
+                "Marcel", "Marc", "Martin", "Kevin", "Dennis"
+        });
+
+        List<String> nachnameBlacklist = Arrays.asList(new String[] {
+                "Müller", "Mayer"
+        });
+
+        StudentEntity shouldFind = new StudentEntity();
+        shouldFind.setVorname("Marc");
+        shouldFind.setNachname("Weinmann");
+        shouldFind.setGeburtsdatum(new DateTime().withDate(1994, 1, 1).toDate());
+        studentService.save(shouldFind);
+
+        StudentEntity shouldNotFind = new StudentEntity();
+        shouldNotFind.setVorname("NotMarc");
+        shouldNotFind.setNachname("Egal");
+        shouldNotFind.setGeburtsdatum(new DateTime().withDate(1994, 1, 1).toDate());
+        studentService.save(shouldNotFind);
+
+        StudentEntity partialMatch = new StudentEntity();
+        partialMatch.setVorname("Marc");
+        partialMatch.setNachname("Müller");
+        partialMatch.setGeburtsdatum(new DateTime().withDate(1994, 1, 1).toDate());
+        studentService.save(partialMatch);
+
+        List<StudentEntity> results = studentService.findByGeburtsdatumBetweenAndVornameInAndNachnameNotIn(startDate, endDate, vornameWhitelist, nachnameBlacklist);
+        for (StudentEntity studentEntity : results) {
+            System.out.println(studentEntity);
         }
     }
 

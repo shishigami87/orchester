@@ -6,6 +6,8 @@ import eu.shishigami.orchester.domain.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -39,6 +41,10 @@ public class StudentService {
 
     public List<StudentEntity> findByVornameAndNachname(final String vorname, final String nachname) {
         return studentRepository.findByVornameAndNachname(vorname, nachname);
+    }
+
+    public List<StudentEntity> findByGeburtsdatumBetweenAndVornameInAndNachnameNotIn(Date startDate, Date endDate, Collection<String> vornameWhitelist, Collection<String> nachnameBlacklist) {
+        return studentRepository.findByGeburtsdatumBetweenAndVornameInAndNachnameNotIn(startDate, endDate, vornameWhitelist, nachnameBlacklist);
     }
 
     public List<StudentEntity> findByKlasse(final KlasseEntity klasseEntity) {
