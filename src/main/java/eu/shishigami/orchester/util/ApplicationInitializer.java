@@ -1,8 +1,10 @@
 package eu.shishigami.orchester.util;
 
 import eu.shishigami.orchester.domain.entity.AdresseEntity;
+import eu.shishigami.orchester.domain.entity.KlasseEntity;
 import eu.shishigami.orchester.domain.entity.StudentEntity;
 import eu.shishigami.orchester.domain.service.AdresseService;
+import eu.shishigami.orchester.domain.service.KlasseService;
 import eu.shishigami.orchester.domain.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -25,12 +27,38 @@ public class ApplicationInitializer {
     @Autowired
     private StudentService studentService;
 
+    @Autowired
+    private KlasseService klasseService;
+
     @PostConstruct
     public void init() {
         if (!initialized) {
             initialized = true;
-            testFindByVorNachname();
+            testFindByKlasse();
         }
+    }
+
+    private void testFindByKlasse() {
+        System.out.println("Test FindByKlasse");
+
+        KlasseEntity klasseEntity = new KlasseEntity();
+        klasseEntity.setName("FIAE");
+        klasseEntity.setJahrgang(11);
+        klasseEntity.setStudenten(studentService.findAll());
+
+        System.out.println("Saving Klasse...");
+        klasseEntity = klasseService.save(klasseEntity);
+
+        StudentEntity studentEntity_ = studentService.findOne(1L);
+        studentEntity_.setKlasse(klasseService.findOne(klasseEntity.getId()));
+        studentService.save(studentEntity_);
+
+        System.out.println("Selecting students by klasse...");
+        List<StudentEntity> results = studentService.findByKlasse(klasseEntity);
+        for (StudentEntity studentEntity : results) {
+            System.out.println(studentEntity);
+        }
+
     }
 
     private void testFindByVorNachname() {
